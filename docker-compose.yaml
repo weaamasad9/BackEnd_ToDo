@@ -1,0 +1,35 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+  app:
+    # Service for the Node.js Server
+    build: 
+      context: .
+      dockerfile: Dockerfile 
+      
+    container_name: BackEnd_ToDo
+    restart: always
+    
+    # 💡 CRITICAL: Load all secrets (including DATABASE_URL) from the local .env file.
+    env_file:
+      - .env
+      
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    
+    ports:
+      - "3000:3000"
+      
+    # Map the current project directory for code visibility
+    volumes:
+      - .:/usr/src/app
+      
+    # 1. Skip 'migrate' (Accelerate doesn't support it in this context)
+    # 2. Run 'prisma generate' to create the client inside the container
+    # 3. Start the server
+    command: >
+      sh -c "npx prisma generate &&
+             npx nodemon src/server.js"
