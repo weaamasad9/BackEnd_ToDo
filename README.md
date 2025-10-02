@@ -80,7 +80,7 @@ The project is configured for a modern development experience:
 
 ## 👤 Author
 
-* **Weaam Asad** -
+* **Weaam Asad** - Developed by me as a personal project :) , with high motivation, strong self-learning ability, and love for challenges and building things from scratch.
 
 ## 🎥 Project Demo
 
